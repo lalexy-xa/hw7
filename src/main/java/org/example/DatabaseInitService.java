@@ -11,8 +11,8 @@ public class DatabaseInitService {
     public static void main(String[] args) throws IOException, SQLException {
         Connection connection =  DatabaseStorage.getConnection();
         String initDBQuery = new String(Files.readAllBytes(Paths.get(INIT_DB_PATH)));
-        PreparedStatement stmt = connection.prepareStatement(initDBQuery);
-        stmt.execute();
+        Statement stmt = connection.createStatement();
+        stmt.execute(initDBQuery);
         connection.close();
 
     }
